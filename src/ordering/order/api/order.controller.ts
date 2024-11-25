@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { OrderService } from './order.service';
+import { OrderService } from '../business/order.service';
 import { OrderRequest } from './order-request.dto';
 
 @Controller('order')
@@ -9,10 +9,5 @@ export class OrderController {
     @Post()
     order(@Body() orderRequest: OrderRequest) {
         this.service.processOrder(orderRequest)
-    }
-
-    @Get()
-    test() {
-        this.service.processOrder("hi")
     }
 }

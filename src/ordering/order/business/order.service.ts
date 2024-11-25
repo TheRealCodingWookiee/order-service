@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { OrderRequest } from '../api/order-request.dto';
 
 @Injectable()
 export class OrderService {
@@ -7,10 +8,10 @@ export class OrderService {
         @Inject('BEVERAGE-MARKET') private readonly marketClient: ClientProxy
     ) {}
 
-    processOrder(data: any) {
+    processOrder(data: OrderRequest) {
         this.marketClient.emit(
             'order_submitted', 
-            "hi"
+            data
         )
     }
 }
